@@ -39,3 +39,13 @@ def average_imdb_by_category(movies, category):
     print(f"Average IMDB score is {category} category: {sum_IMDB}")
 
 
+is_above_5_5(movies[0])
+
+movies_above_5_5(movies)
+
+movies_by_category(movies,"Romance")
+
+average_imdb(movies)
+
+average_imdb_by_category(movies,"Suspense")
+

@@ -78,8 +78,8 @@ def has_33(nums):
             return True
     return False 
 
-has_33([1, 3, 3]) 
-has_33([1, 3, 1, 3])
+print(has_33([1, 3, 3])) 
+print(has_33([1, 3, 1, 3]))
 
 #8)
 def spy_game(nums):
