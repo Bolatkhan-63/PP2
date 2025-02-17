@@ -10,3 +10,4 @@ def funct(str):
 strings = ["a","abb","abb","abf","abbbbbbb","abbbbd"]
 for s in strings:
     print(f"'{s}' : '{funct(s)}'")
+    

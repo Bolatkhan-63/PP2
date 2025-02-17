@@ -19,3 +19,4 @@ test_strings = [
 
 for s in test_strings:
     print(f"{s} => {chek_word(s)}")
+    

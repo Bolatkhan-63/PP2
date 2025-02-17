@@ -14,3 +14,4 @@ test_strings = [
 
 for text in test_strings:
     print(f"'{text}' → {find_sequences(text)}")
+    

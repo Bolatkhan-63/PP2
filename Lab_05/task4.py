@@ -15,3 +15,4 @@ test_strings = [
 
 for word in test_strings:
     print(f'{word} => {upcase_lowcase(word)}')
+    
