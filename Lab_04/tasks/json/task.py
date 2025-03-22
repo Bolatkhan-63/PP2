@@ -1,7 +1,7 @@
 import json
 
 
-file_path = "C:/Users/bolat/Desktop/Apps_and_more/KBTU_1курс_2семестр/Programming/Lab_04/tasks/json/sample-data.json"
+file_path = "C:/Apps_and_more/KBTU_1курс_2семестр/Programming/Lab_04/tasks/json/sample-data.json"
 
 
 with open(file_path) as f:
