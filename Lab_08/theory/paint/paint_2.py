@@ -30,6 +30,7 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            
             print("LMB pressed!")
             LMBpressed = True
             currX = event.pos[0]
