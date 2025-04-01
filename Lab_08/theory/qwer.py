@@ -4,9 +4,19 @@ import sys
 pygame.init()
 
 # Экран параметрлері
-SCREEN_WIDTH = 100
-SCREEN_HEIGHT = 100
-DISPLAYSURF = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+screen = pygame.display.set_mode((800, 600))
+
+# Екі бөлік
+canvas1 = pygame.Surface((400, 600))  # Сол жақ "экран"
+canvas2 = pygame.Surface((400, 600))  # Оң жақ "экран"
+
+# Бірдей фреймде екеуіне бөлек сурет салу
+canvas1.fill((255, 255, 255))  # Ақ
+canvas2.fill((220, 220, 220))  # Ашық сұр
+
+# Бас терезеге екеуін blit ету:
+screen.blit(canvas1, (0, 0))
+screen.blit(canvas2, (400, 0))
 
 # Ойын циклы
 while True:
@@ -16,6 +26,5 @@ while True:
             sys.exit()  
 
     # Экранды тазалау (фонды қара түспен бояу)
-    DISPLAYSURF.fill((255, 255, 255))
-
+    
     pygame.display.update()
