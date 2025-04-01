@@ -1,13 +1,14 @@
+#Imports
 import pygame
 import math,color
 
 pygame.init()
 
+#Informations and variables
 WIDTH = 800
 HEIGHT = 700
 
 colors = [color.colorBLUE,color.colorGREEN,color.colorRED,color.colorWHITE,color.colorYELLOW]
-
 
 choice = 1
 run = True
@@ -64,24 +65,28 @@ minus_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр
 minus_image = pygame.transform.scale(minus_image,(30,30))
 
 
-
+#Function for paint rectangle
 def rect():
+    # variables
     global choice, run, glv_layer,color_choice,colors,silver_pos,glv_2_layer
     color_figure = colors[color_choice]
     
 
-    
+    # Info for rectangle
     clock = pygame.time.Clock()
     LMBpressed = False
     THICKNESS = 5
     currX = currY = prevX = prevY = 0
     running = True
 
+    #function for calculate rect
     def calculate_rect(x1, y1, x2, y2):
         return pygame.Rect(min(x1, x2), min(y1, y2), abs(x1 - x2), abs(y1 - y2))
 
+    #Main rect loop
     while running:
         
+        #Blit Menu
         screen.blit(glv_2_layer,(0,540))
 
         pygame.draw.line(glv_2_layer, color.colorWHITE, (0,0), (800, 0), 10)
@@ -110,7 +115,7 @@ def rect():
         
         
 
-
+        #Test cycles
         if color_choice>4:
             color_choice = 0
         elif color_choice < 0:
@@ -143,7 +148,7 @@ def rect():
                 currX, currY = event.pos
                 pygame.draw.rect(glv_layer, color_figure, calculate_rect(prevX, prevY, currX, currY), THICKNESS)
 
-
+        #Also Test cycles
         if color_choice>4:
             color_choice = 0
         elif color_choice < 0:
@@ -165,25 +170,30 @@ def rect():
         pygame.display.flip()
         clock.tick(60)
 
+#Function for paint circle
 def circle():
+    # variables
     global choice, run, glv_layer,color_choice,colors,silver_pos,glv_2_layer
     color_figure = colors[color_choice]
     
-
+    # Info for circle
     clock = pygame.time.Clock()
     LMBpressed = False
     THICKNESS = 5
     currX = currY = prevX = prevY = 0
     running = True
 
+    #function for calculate circle
     def calculate_circle(x1, y1, x2, y2):
         cx = (x1 + x2) // 2
         cy = (y1 + y2) // 2
         r = int(math.hypot(x2 - x1, y2 - y1) / 2)
         return cx, cy, r
-
+    
+    #Main circle loop
     while running:
 
+        #Blit Menu
         screen.blit(glv_2_layer,(0,540))
 
         pygame.draw.line(glv_2_layer, color.colorWHITE, (0,0), (800, 0), 10)
@@ -212,7 +222,7 @@ def circle():
         
         
 
-
+        #Test cycles
         if color_choice>4:
             color_choice = 0
         elif color_choice < 0:
@@ -245,6 +255,7 @@ def circle():
                 cx, cy, r = calculate_circle(prevX, prevY, currX, currY)
                 pygame.draw.circle(glv_layer, color_figure, (cx, cy), r, THICKNESS)
 
+        #Also Test cycles
         if color_choice>4:
             color_choice = 0
         elif color_choice < 0:
@@ -267,18 +278,22 @@ def circle():
         pygame.display.flip()
         clock.tick(60)
 
+#Function for paint with pen
 def pen():
+    # variables
     global choice, run, glv_layer,color_choice,colors,silver_pos,glv_2_layer
     color_figure = colors[color_choice]
     
+    # Info for pen
     clock = pygame.time.Clock()
     drawing = False
     THICKNESS = 5
     prev_pos = None
     running = True
 
+    #Main pen loop
     while running:
-
+        #Blit Menu
         screen.blit(glv_2_layer,(0,540))
 
         pygame.draw.line(glv_2_layer, color.colorWHITE, (0,0), (800, 0), 10)
@@ -305,7 +320,7 @@ def pen():
         glv_2_layer.blit(plus_image,(10,30))
         glv_2_layer.blit(minus_image,(10,70))
         
-        
+        #Test cycles
         if color_choice>4:
             color_choice = 0
         elif color_choice < 0:
@@ -336,7 +351,7 @@ def pen():
                 drawing = False
                 prev_pos = None
 
-
+        #Also Test cycles
         if color_choice>4:
             color_choice = 0
         elif color_choice < 0:
@@ -348,6 +363,7 @@ def pen():
 
         color_figure = colors[color_choice]
 
+        #Drawing 
         if drawing:
             curr_pos = pygame.mouse.get_pos()
             if prev_pos:
@@ -358,17 +374,20 @@ def pen():
         pygame.display.flip()
         clock.tick(60)
 
+#Function for eraser
 def eraser():
+    # variables
     global choice, run, glv_layer,color_choice,colors,silver_pos,glv_2_layer
     
-
+    # Info for eraser
     clock = pygame.time.Clock()
     LMBpressed = False
     ERASER_SIZE = 50
     running = True
 
+    #Main eraser loop
     while running:
-
+        #Blit Menu
         screen.blit(glv_2_layer,(0,540))
 
         pygame.draw.line(glv_2_layer, color.colorWHITE, (0,0), (800, 0), 10)
@@ -395,7 +414,7 @@ def eraser():
         glv_2_layer.blit(plus_image,(10,30))
         glv_2_layer.blit(minus_image,(10,70))
         
-        
+        #Test cycles
         if color_choice>4:
             color_choice = 0
         elif color_choice < 0:
@@ -424,6 +443,7 @@ def eraser():
             if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 LMBpressed = False
 
+        #Also Test cycles
         if color_choice>4:
             color_choice = 0
         elif color_choice < 0:
@@ -433,6 +453,7 @@ def eraser():
         elif silver_pos < 495:
             silver_pos = 735
 
+        #Deleting 
         if LMBpressed:
             x, y = pygame.mouse.get_pos()
             pygame.draw.circle(glv_layer, color.colorBLACK, (x, y), ERASER_SIZE)
@@ -442,9 +463,9 @@ def eraser():
         clock.tick(60)
 
 
-
+# Main loop:
 while run:
-    
+    #Test cycles
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
@@ -453,7 +474,8 @@ while run:
             if event.key == pygame.K_2: choice = 2
             if event.key == pygame.K_3: choice = 3
             if event.key == pygame.K_4: choice = 4
-    
+     
+    #choose one Function
     if choice == 1:
         rect()
     elif choice == 2:
@@ -463,6 +485,7 @@ while run:
     elif choice == 4:
         eraser()
 
+    #Also Test cycles
     if color_choice>4:
         color_choice = 0
     elif color_choice < 0:
