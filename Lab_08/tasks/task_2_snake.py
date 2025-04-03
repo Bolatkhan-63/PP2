@@ -31,7 +31,11 @@ game_over_sound = pygame.mixer.Sound("C:\Apps_and_more\KBTU_1курс_2семе�
 #Draw rects
 def draw_wall():
     for i in range(32):
-        pass
+        pygame.draw.rect(screen, color.colorBLUE, ( 0, i* CELL, CELL, CELL))
+        pygame.draw.rect(screen, color.colorBLUE, ( 21 * CELL, i* CELL, CELL, CELL))
+    for i in range(1,21):
+        pygame.draw.rect(screen, color.colorBLUE, (i* CELL, 0, CELL, CELL))
+        pygame.draw.rect(screen, color.colorBLUE, (i* CELL, 21 * CELL, CELL, CELL))
 
 def draw_grid():
     for i in range(HEIGHT // CELL):
@@ -71,9 +75,13 @@ class Food:
             x = random.randint(1, WIDTH // CELL) 
             y = random.randint(1, HEIGHT // CELL) 
             new_Pos = Point(x,y)
-            true_1 = 0
-            
-            if true_1 == 0:
+            true_1 = True
+              
+            for i in range(len_snake):
+                if new_Pos.x == snake_body[i].x and new_Pos.y == snake_body[i].y:
+                    true_1 = False
+
+            if true_1 :
                 self.pos = new_Pos
                 break
 
@@ -159,16 +167,18 @@ while running:
     screen.fill(color.colorBLACK)
 
     draw_grid_chess()# Draw rects in the game
+    draw_wall()
 
     #Draw texts
     screen.blit(font_small.render(f"Level: {LEVEL}",True,color.colorBLUE),(670,230))
     screen.blit(font_small.render(f"SCORE: {SCORE}",True,color.colorBLUE),(670,40))
     screen.blit(font_small.render(f"To next level: {Next_level}",True,color.colorBLUE),(670,260))
 
-
+    len_snake = len(snake.body)
     # Functions for game
     snake.move()
 
+    #Checking snake head
     head = snake.body[0]
     for segment in snake.body[1:]:
         if head.x == segment.x and head.y == segment.y:
