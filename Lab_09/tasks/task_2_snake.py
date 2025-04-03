@@ -9,13 +9,12 @@ pygame.init()
 #Informations 
 WIDTH = 600
 HEIGHT = 600
-screen = pygame.display.set_mode((960, 660))
+screen = pygame.display.set_mode((900, 600))
 CELL = 30
 Game_Over = False
 LEVEL = 1
 SCORE = 0
 Next_level = 5
-len_snake = 0
 
 font = pygame.font.SysFont("Verdana",60)
 font_small = pygame.font.SysFont("Verdana",20)
@@ -24,26 +23,18 @@ game_over = font.render("Game Over", True,color.colorGREEN)
 apple_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\images/apple.png").convert_alpha()
 apple_image = pygame.transform.scale(apple_image,(30,30))
 
-game_over_sound = pygame.mixer.Sound("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\sounds\sound2.mp3")
-
-
-
 #Draw rects
-def draw_wall():
-    for i in range(32):
-        pass
-
 def draw_grid():
     for i in range(HEIGHT // CELL):
         for j in range(WIDTH // CELL):
-            pygame.draw.rect(screen, color.colorGRAY, ((i+1) * CELL, (j+1) * CELL, CELL, CELL), 1)
+            pygame.draw.rect(screen, color.colorGRAY, (i * CELL, j * CELL, CELL, CELL), 1)
 
 def draw_grid_chess():
     colors = [color.colorWHITE, color.colorGRAY]
 
     for i in range(HEIGHT // CELL):
         for j in range(WIDTH // CELL):
-            pygame.draw.rect(screen, colors[(i + j) % 2], ((i+1) * CELL, (j+1) * CELL, CELL, CELL))
+            pygame.draw.rect(screen, colors[(i + j) % 2], (i * CELL, j * CELL, CELL, CELL))
 
 
 #Class point
@@ -54,29 +45,6 @@ class Point:
 
     def __str__(self):
         return f"{self.x}, {self.y}"
-
-#Class Food
-class Food:
-    def __init__(self):
-        self.pos = Point(9, 9)# Default food position
-
-    #Draw food
-    def draw(self):
-        global apple_image
-        screen.blit(apple_image, (self.pos.x * CELL, self.pos.y * CELL))
-
-    # Generate next food
-    def generate_random_pos(self,snake_body):
-        while True:
-            x = random.randint(1, WIDTH // CELL) 
-            y = random.randint(1, HEIGHT // CELL) 
-            new_Pos = Point(x,y)
-            true_1 = 0
-            
-            if true_1 == 0:
-                self.pos = new_Pos
-                break
-
 
 # Class snake
 class Snake:
@@ -96,16 +64,16 @@ class Snake:
         self.body[0].y += self.dy
 
         # checks the right border
-        if self.body[0].x > WIDTH // CELL:
+        if self.body[0].x > WIDTH // CELL - 1:
             Game_Over = True
         # checks the left border
-        if self.body[0].x < 1:
+        if self.body[0].x < 0:
             Game_Over = True
         # checks the bottom border
-        if self.body[0].y > HEIGHT // CELL:
+        if self.body[0].y > HEIGHT // CELL - 1:
             Game_Over = True
         # checks the top border
-        if self.body[0].y < 1:
+        if self.body[0].y < 0:
             Game_Over = True
 
     #Snake 
@@ -127,6 +95,26 @@ class Snake:
             self.body.append(Point(head.x, head.y))
             food.generate_random_pos(snake_body)
 
+#Class Food
+class Food:
+    def __init__(self):
+        self.pos = Point(9, 9)# Default food position
+
+    #Draw food
+    def draw(self):
+        global apple_image
+        screen.blit(apple_image, (self.pos.x * CELL, self.pos.y * CELL, CELL, CELL))
+        
+    # Generate next food
+    def generate_random_pos(self,snake_body):
+        while True:
+            x = random.randint(0, WIDTH // CELL - 1) 
+            y = random.randint(0, HEIGHT // CELL - 1) 
+            new_Pos = Point(x,y)
+            if new_Pos not in snake_body:
+                self.pos = new_Pos
+                break
+
 
 
 
@@ -146,34 +134,31 @@ while running:
         if event.type == pygame.QUIT:# For quit the game
             running = False
         if event.type == pygame.KEYDOWN:# For moving snake
-            if event.key == pygame.K_RIGHT and snake.dx != -1:
-                snake.dx = 1; snake.dy = 0
-            elif event.key == pygame.K_LEFT and snake.dx != 1:
-                snake.dx = -1; snake.dy = 0
-            elif event.key == pygame.K_DOWN and snake.dy != -1:
-                snake.dx = 0; snake.dy = 1
-            elif event.key == pygame.K_UP and snake.dy != 1:
-                snake.dx = 0; snake.dy = -1
-
+            if event.key == pygame.K_RIGHT:
+                snake.dx = 1
+                snake.dy = 0
+            elif event.key == pygame.K_LEFT:
+                snake.dx = -1
+                snake.dy = 0
+            elif event.key == pygame.K_DOWN:
+                snake.dx = 0
+                snake.dy = 1
+            elif event.key == pygame.K_UP:
+                snake.dx = 0
+                snake.dy = -1
 
     screen.fill(color.colorBLACK)
 
     draw_grid_chess()# Draw rects in the game
 
     #Draw texts
-    screen.blit(font_small.render(f"Level: {LEVEL}",True,color.colorBLUE),(670,230))
-    screen.blit(font_small.render(f"SCORE: {SCORE}",True,color.colorBLUE),(670,40))
-    screen.blit(font_small.render(f"To next level: {Next_level}",True,color.colorBLUE),(670,260))
+    screen.blit(font_small.render(f"Level: {LEVEL}",True,color.colorBLUE),(620,200))
+    screen.blit(font_small.render(f"SCORE: {SCORE}",True,color.colorBLUE),(620,10))
+    screen.blit(font_small.render(f"To next level: {Next_level}",True,color.colorBLUE),(620,230))
 
 
     # Functions for game
     snake.move()
-
-    head = snake.body[0]
-    for segment in snake.body[1:]:
-        if head.x == segment.x and head.y == segment.y:
-            Game_Over = True
-
     snake.check_collision(food,snake.body)
 
     snake.draw()
@@ -190,15 +175,16 @@ while running:
         screen.fill(color.colorBLACK)
         screen.blit(game_over,(260,220))
 
-        game_over_sound.play()
+        pygame.mixer.Sound("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\sounds\sound2.mp3").play()
         time.sleep(1)
         screen.blit(font.render(f"Your score is: {SCORE}",True,color.colorGRAY),(190,290))
         pygame.display.update()
         time.sleep(4)
         running = False
 
-        
     
+
+        
 
 
     pygame.display.flip()
