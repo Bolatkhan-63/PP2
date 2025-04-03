@@ -18,6 +18,7 @@ WHITE = (255, 255, 255)
 #Informations
 SCREEN_WIDTH = 400
 SCREEN_HEIGHT = 600
+
 SPEED = 5
 SCORE = 0
 COIN = 0
@@ -136,18 +137,28 @@ INC_SPEED = pygame.USEREVENT + 1
 pygame.time.set_timer(INC_SPEED, 1000)
 
 
-
+len_zhol = 0
+len_zhol_2 = -600
 
 while True:
+    
     # For quit button and move every second
     for event in pygame.event.get(): 
+        
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
     
     # First display settings
     DISPLAYSURF.fill(WHITE)
-    DISPLAYSURF.blit(background, (0,0))
+    DISPLAYSURF.blit(background, (0,len_zhol))
+    DISPLAYSURF.blit(background, (0,len_zhol_2))
+
+    len_zhol += 4
+    len_zhol_2 += 4
+    if len_zhol_2 >= 0:
+        len_zhol = 0
+        len_zhol_2 = -600
     
     # Move every elements in game
     for entity in all_sprites:
@@ -225,6 +236,8 @@ while True:
         #Position next coin
         coin_1.rect.top = 0
         coin_1.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
+
+    
          
 
     pygame.display.flip()
