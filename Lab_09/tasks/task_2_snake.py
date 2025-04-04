@@ -73,6 +73,7 @@ class Food:
     def __init__(self):
         self.update_image()
         self.pos = Point(9, 9)# Default food position
+        self.spawn_time = pygame.time.get_ticks()
 
     def update_image(self):
         global current_index
@@ -80,6 +81,7 @@ class Food:
         random_path = apple_images[current_index]
         apple_image = pygame.image.load(random_path).convert_alpha()#Apple's image
         self.apple_image = pygame.transform.scale(apple_image , (30, 30))#Transform apple's image
+        self.spawn_time = pygame.time.get_ticks()
     #Draw food
     def draw(self):
         
@@ -99,7 +101,7 @@ class Food:
 
             if true_1 :
                 self.pos = new_Pos
-                
+                self.spawn_time = pygame.time.get_ticks()
                 break
 
 
@@ -159,10 +161,6 @@ class Snake:
             food.update_image()
             food.generate_random_pos(snake_body)
             
-
-
-
-
 FPS = 5
 clock = pygame.time.Clock()
 
@@ -213,6 +211,11 @@ while running:
 
     snake.draw()
     food.draw()
+    current_time = pygame.time.get_ticks()
+    if current_time - food.spawn_time > 5000:  # 5000 мс = 5 сек
+        food.generate_random_pos(snake.body)
+        food.update_image()
+        food_spawn_time = pygame.time.get_ticks()
     
     #for next level
     if Next_level==0:
