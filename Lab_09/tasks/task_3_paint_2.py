@@ -5,7 +5,7 @@ import math,color
 pygame.init()
 
 #Informations and variables
-WIDTH = 800
+WIDTH = 1280
 HEIGHT = 700
 
 colors = [color.colorBLUE,color.colorGREEN,color.colorRED,color.colorWHITE,color.colorYELLOW]
@@ -14,7 +14,7 @@ choice = 1
 run = True
 
 color_choice = 0
-silver_pos = 495
+silver_pos = 955
 
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -24,51 +24,69 @@ glv_2_layer = pygame.Surface((WIDTH, 310))
 glv_layer.fill(color.colorBLACK)
 glv_2_layer.fill(color.colorBLACK)
 
-rect_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\images/rect.png")
+rect_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/rect.png")
 rect_image = pygame.transform.scale(rect_image,(100,100))
-circle_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\images/circle.png")
+circle_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/circle.png")
 circle_image = pygame.transform.scale(circle_image,(100,100))
-pen_image= pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\images/pen.png")
+pen_image= pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/pen.png")
 pen_image = pygame.transform.scale(pen_image,(100,100))
-eraser_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\images/eraser.png")
+eraser_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/eraser.png")
 eraser_image = pygame.transform.scale(eraser_image,(100,100))
 
-blue_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\images/blue.png")
+sqr_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/square.png")
+sqr_image = pygame.transform.scale(sqr_image,(100,100))
+right_tr_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/right_triangle.png")
+right_tr_image = pygame.transform.scale(right_tr_image,(100,100))
+eq_tr_image= pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/equilateral_triangle.png")
+eq_tr_image = pygame.transform.scale(eq_tr_image,(100,100))
+rhombus_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/rhombus.png")
+rhombus_image = pygame.transform.scale(rhombus_image,(100,100))
+
+
+blue_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/blue.png")
 blue_image = pygame.transform.scale(blue_image,(50,50))
-green_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\images/green.png")
+green_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/green.png")
 green_image = pygame.transform.scale(green_image,(50,50))
-red_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\images/red.png")
+red_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/red.png")
 red_image = pygame.transform.scale(red_image,(50,50))
-white_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\images/white.png")
+white_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/white.png")
 white_image = pygame.transform.scale(white_image,(50,50))
-yellow_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\images/yellow.png")
+yellow_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/yellow.png")
 yellow_image = pygame.transform.scale(yellow_image,(50,50))
-silver_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\images/silver.png")
+silver_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/silver.png")
 silver_image = pygame.transform.scale(silver_image,(60,60))
 
-one_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\images/one.png")
+one_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/one.png")
 one_image = pygame.transform.scale(one_image,(20,30))
-two_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\images/two.png")
+two_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/two.png")
 two_image = pygame.transform.scale(two_image,(20,30))
-three_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\images/three.png")
+three_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/three.png")
 three_image = pygame.transform.scale(three_image,(20,30))
-four_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\images/four.png")
+four_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/four.png")
 four_image = pygame.transform.scale(four_image,(20,30))
+five_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/five.png")
+five_image = pygame.transform.scale(five_image,(20,30))
+six_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/six.png")
+six_image = pygame.transform.scale(six_image,(20,30))
+seven_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/seven.png")
+seven_image = pygame.transform.scale(seven_image,(20,30))
+eight_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/eight.png")
+eight_image = pygame.transform.scale(eight_image,(20,30))
 
-str_left = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\images/str2.png")
+str_left = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/str2.png")
 str_left = pygame.transform.scale(str_left,(70,40))
-str_right = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\images/str.png")
+str_right = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/str.png")
 str_right = pygame.transform.scale(str_right,(70,40))
-plus_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\images/plus.png")
+plus_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/plus.png")
 plus_image = pygame.transform.scale(plus_image,(30,30))
-minus_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\images/minus.png")
+minus_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/minus.png")
 minus_image = pygame.transform.scale(minus_image,(30,30))
 
 
 #Function for paint rectangle
 def rect():
     # variables
-    global choice, run, glv_layer,color_choice,colors,silver_pos,glv_2_layer
+    global choice, run, glv_layer,color_choice,colors,silver_pos,glv_2_layer,WIDTH
     color_figure = colors[color_choice]
     
 
@@ -89,27 +107,35 @@ def rect():
         #Blit Menu
         screen.blit(glv_2_layer,(0,540))
 
-        pygame.draw.line(glv_2_layer, color.colorWHITE, (0,0), (800, 0), 10)
+        pygame.draw.line(glv_2_layer, color.colorWHITE, (0,0), (WIDTH, 0), 10)
 
         glv_2_layer.blit(silver_image,(silver_pos,30))
-        glv_2_layer.blit(blue_image,(500,35))
-        glv_2_layer.blit(green_image,(560,35))
-        glv_2_layer.blit(red_image,(620,35))
-        glv_2_layer.blit(white_image,(680,35))
-        glv_2_layer.blit(yellow_image,(740,35))
+        glv_2_layer.blit(blue_image,(960,35))
+        glv_2_layer.blit(green_image,(1020,35))
+        glv_2_layer.blit(red_image,(1080,35))
+        glv_2_layer.blit(white_image,(1140,35))
+        glv_2_layer.blit(yellow_image,(1200,35))
 
         glv_2_layer.blit(rect_image,(50,10))
         glv_2_layer.blit(circle_image,(160,10))
         glv_2_layer.blit(pen_image,(270,10))
         glv_2_layer.blit(eraser_image,(380,10))
+        glv_2_layer.blit(sqr_image,(490,10))
+        glv_2_layer.blit(right_tr_image,(600,10))
+        glv_2_layer.blit(eq_tr_image,(710,10))
+        glv_2_layer.blit(rhombus_image,(820,10))
         
         glv_2_layer.blit(one_image,(90,120))
         glv_2_layer.blit(two_image,(200,120))
         glv_2_layer.blit(three_image,(310,120))
         glv_2_layer.blit(four_image,(420,120))
+        glv_2_layer.blit(five_image,(530,120))
+        glv_2_layer.blit(six_image,(640,120))
+        glv_2_layer.blit(seven_image,(750,120))
+        glv_2_layer.blit(eight_image,(860,120))
 
-        glv_2_layer.blit(str_left,(550,100))
-        glv_2_layer.blit(str_right,(670,100))
+        glv_2_layer.blit(str_left,(1010,100))
+        glv_2_layer.blit(str_right,(1130,100))
         glv_2_layer.blit(plus_image,(10,30))
         glv_2_layer.blit(minus_image,(10,70))
         
@@ -120,10 +146,10 @@ def rect():
             color_choice = 0
         elif color_choice < 0:
             color_choice = 4
-        if silver_pos>735:
-            silver_pos = 495
-        elif silver_pos < 495:
-            silver_pos = 735
+        if silver_pos>1195:
+            silver_pos = 955
+        elif silver_pos < 955:
+            silver_pos = 1195
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -134,6 +160,10 @@ def rect():
                 if event.key == pygame.K_2: choice = 2; running = False
                 if event.key == pygame.K_3: choice = 3; running = False
                 if event.key == pygame.K_4: choice = 4; running = False
+                if event.key == pygame.K_5: choice = 5; running = False
+                if event.key == pygame.K_6: choice = 6; running = False
+                if event.key == pygame.K_7: choice = 7; running = False
+                if event.key == pygame.K_8: choice = 8; running = False
                 if event.key == pygame.K_EQUALS: THICKNESS += 1
                 if event.key == pygame.K_MINUS: THICKNESS = max(1, THICKNESS - 1)
                 if event.key == pygame.K_RIGHT: color_choice+=1; silver_pos+=60; glv_2_layer.fill(color.colorBLACK)
@@ -153,10 +183,10 @@ def rect():
             color_choice = 0
         elif color_choice < 0:
             color_choice = 4
-        if silver_pos>735:
-            silver_pos = 495
-        elif silver_pos < 495:
-            silver_pos = 735
+        if silver_pos>1195:
+            silver_pos = 955
+        elif silver_pos < 955:
+            silver_pos = 1195
 
         color_figure = colors[color_choice]
 
@@ -196,27 +226,35 @@ def circle():
         #Blit Menu
         screen.blit(glv_2_layer,(0,540))
 
-        pygame.draw.line(glv_2_layer, color.colorWHITE, (0,0), (800, 0), 10)
+        pygame.draw.line(glv_2_layer, color.colorWHITE, (0,0), (WIDTH, 0), 10)
 
         glv_2_layer.blit(silver_image,(silver_pos,30))
-        glv_2_layer.blit(blue_image,(500,35))
-        glv_2_layer.blit(green_image,(560,35))
-        glv_2_layer.blit(red_image,(620,35))
-        glv_2_layer.blit(white_image,(680,35))
-        glv_2_layer.blit(yellow_image,(740,35))
+        glv_2_layer.blit(blue_image,(960,35))
+        glv_2_layer.blit(green_image,(1020,35))
+        glv_2_layer.blit(red_image,(1080,35))
+        glv_2_layer.blit(white_image,(1140,35))
+        glv_2_layer.blit(yellow_image,(1200,35))
 
         glv_2_layer.blit(rect_image,(50,10))
         glv_2_layer.blit(circle_image,(160,10))
         glv_2_layer.blit(pen_image,(270,10))
         glv_2_layer.blit(eraser_image,(380,10))
+        glv_2_layer.blit(sqr_image,(490,10))
+        glv_2_layer.blit(right_tr_image,(600,10))
+        glv_2_layer.blit(eq_tr_image,(710,10))
+        glv_2_layer.blit(rhombus_image,(820,10))
         
         glv_2_layer.blit(one_image,(90,120))
         glv_2_layer.blit(two_image,(200,120))
         glv_2_layer.blit(three_image,(310,120))
         glv_2_layer.blit(four_image,(420,120))
+        glv_2_layer.blit(five_image,(530,120))
+        glv_2_layer.blit(six_image,(640,120))
+        glv_2_layer.blit(seven_image,(750,120))
+        glv_2_layer.blit(eight_image,(860,120))
 
-        glv_2_layer.blit(str_left,(550,100))
-        glv_2_layer.blit(str_right,(670,100))
+        glv_2_layer.blit(str_left,(1010,100))
+        glv_2_layer.blit(str_right,(1130,100))
         glv_2_layer.blit(plus_image,(10,30))
         glv_2_layer.blit(minus_image,(10,70))
         
@@ -227,10 +265,10 @@ def circle():
             color_choice = 0
         elif color_choice < 0:
             color_choice = 4
-        if silver_pos>735:
-            silver_pos = 495
-        elif silver_pos < 495:
-            silver_pos = 735
+        if silver_pos>1195:
+            silver_pos = 955
+        elif silver_pos < 955:
+            silver_pos = 1195
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
@@ -240,6 +278,10 @@ def circle():
                 if event.key == pygame.K_2: choice = 2; running = False
                 if event.key == pygame.K_3: choice = 3; running = False
                 if event.key == pygame.K_4: choice = 4; running = False
+                if event.key == pygame.K_5: choice = 5; running = False
+                if event.key == pygame.K_6: choice = 6; running = False
+                if event.key == pygame.K_7: choice = 7; running = False
+                if event.key == pygame.K_8: choice = 8; running = False
                 if event.key == pygame.K_EQUALS: THICKNESS += 1
                 if event.key == pygame.K_MINUS: THICKNESS = max(1, THICKNESS - 1)
                 if event.key == pygame.K_RIGHT: color_choice+=1; silver_pos+=60; glv_2_layer.fill(color.colorBLACK)
@@ -260,10 +302,10 @@ def circle():
             color_choice = 0
         elif color_choice < 0:
             color_choice = 4
-        if silver_pos>735:
-            silver_pos = 495
-        elif silver_pos < 495:
-            silver_pos = 735
+        if silver_pos>1195:
+            silver_pos = 955
+        elif silver_pos < 955:
+            silver_pos = 1195
 
         color_figure = colors[color_choice]
 
@@ -296,27 +338,36 @@ def pen():
         #Blit Menu
         screen.blit(glv_2_layer,(0,540))
 
-        pygame.draw.line(glv_2_layer, color.colorWHITE, (0,0), (800, 0), 10)
+        pygame.draw.line(glv_2_layer, color.colorWHITE, (0,0), (WIDTH, 0), 10)
 
         glv_2_layer.blit(silver_image,(silver_pos,30))
-        glv_2_layer.blit(blue_image,(500,35))
-        glv_2_layer.blit(green_image,(560,35))
-        glv_2_layer.blit(red_image,(620,35))
-        glv_2_layer.blit(white_image,(680,35))
-        glv_2_layer.blit(yellow_image,(740,35))
+        glv_2_layer.blit(blue_image,(960,35))
+        glv_2_layer.blit(green_image,(1020,35))
+        glv_2_layer.blit(red_image,(1080,35))
+        glv_2_layer.blit(white_image,(1140,35))
+        glv_2_layer.blit(yellow_image,(1200,35))
 
         glv_2_layer.blit(rect_image,(50,10))
         glv_2_layer.blit(circle_image,(160,10))
         glv_2_layer.blit(pen_image,(270,10))
         glv_2_layer.blit(eraser_image,(380,10))
+        glv_2_layer.blit(sqr_image,(490,10))
+        glv_2_layer.blit(right_tr_image,(600,10))
+        glv_2_layer.blit(eq_tr_image,(710,10))
+        glv_2_layer.blit(rhombus_image,(820,10))
         
         glv_2_layer.blit(one_image,(90,120))
         glv_2_layer.blit(two_image,(200,120))
         glv_2_layer.blit(three_image,(310,120))
         glv_2_layer.blit(four_image,(420,120))
+        glv_2_layer.blit(five_image,(530,120))
+        glv_2_layer.blit(six_image,(640,120))
+        glv_2_layer.blit(seven_image,(750,120))
+        glv_2_layer.blit(eight_image,(860,120))
+        
 
-        glv_2_layer.blit(str_left,(550,100))
-        glv_2_layer.blit(str_right,(670,100))
+        glv_2_layer.blit(str_left,(1010,100))
+        glv_2_layer.blit(str_right,(1130,100))
         glv_2_layer.blit(plus_image,(10,30))
         glv_2_layer.blit(minus_image,(10,70))
         
@@ -325,10 +376,10 @@ def pen():
             color_choice = 0
         elif color_choice < 0:
             color_choice = 4
-        if silver_pos>735:
-            silver_pos = 495
-        elif silver_pos < 495:
-            silver_pos = 735
+        if silver_pos>1195:
+            silver_pos = 955
+        elif silver_pos < 955:
+            silver_pos = 1195
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -339,6 +390,10 @@ def pen():
                 if event.key == pygame.K_2: choice = 2; running = False
                 if event.key == pygame.K_3: choice = 3; running = False
                 if event.key == pygame.K_4: choice = 4; running = False
+                if event.key == pygame.K_5: choice = 5; running = False
+                if event.key == pygame.K_6: choice = 6; running = False
+                if event.key == pygame.K_7: choice = 7; running = False
+                if event.key == pygame.K_8: choice = 8; running = False
                 if event.key == pygame.K_EQUALS: THICKNESS += 1
                 if event.key == pygame.K_MINUS: THICKNESS = max(1, THICKNESS - 1)
                 if event.key == pygame.K_RIGHT: color_choice+=1; silver_pos+=60; glv_2_layer.fill(color.colorBLACK)
@@ -356,10 +411,10 @@ def pen():
             color_choice = 0
         elif color_choice < 0:
             color_choice = 4
-        if silver_pos>735:
-            silver_pos = 495
-        elif silver_pos < 495:
-            silver_pos = 735
+        if silver_pos>1195:
+            silver_pos = 955
+        elif silver_pos < 955:
+            silver_pos = 1195
 
         color_figure = colors[color_choice]
 
@@ -390,27 +445,35 @@ def eraser():
         #Blit Menu
         screen.blit(glv_2_layer,(0,540))
 
-        pygame.draw.line(glv_2_layer, color.colorWHITE, (0,0), (800, 0), 10)
+        pygame.draw.line(glv_2_layer, color.colorWHITE, (0,0), (WIDTH, 0), 10)
 
         glv_2_layer.blit(silver_image,(silver_pos,30))
-        glv_2_layer.blit(blue_image,(500,35))
-        glv_2_layer.blit(green_image,(560,35))
-        glv_2_layer.blit(red_image,(620,35))
-        glv_2_layer.blit(white_image,(680,35))
-        glv_2_layer.blit(yellow_image,(740,35))
+        glv_2_layer.blit(blue_image,(960,35))
+        glv_2_layer.blit(green_image,(1020,35))
+        glv_2_layer.blit(red_image,(1080,35))
+        glv_2_layer.blit(white_image,(1140,35))
+        glv_2_layer.blit(yellow_image,(1200,35))
 
         glv_2_layer.blit(rect_image,(50,10))
         glv_2_layer.blit(circle_image,(160,10))
         glv_2_layer.blit(pen_image,(270,10))
         glv_2_layer.blit(eraser_image,(380,10))
+        glv_2_layer.blit(sqr_image,(490,10))
+        glv_2_layer.blit(right_tr_image,(600,10))
+        glv_2_layer.blit(eq_tr_image,(710,10))
+        glv_2_layer.blit(rhombus_image,(820,10))
         
         glv_2_layer.blit(one_image,(90,120))
         glv_2_layer.blit(two_image,(200,120))
         glv_2_layer.blit(three_image,(310,120))
         glv_2_layer.blit(four_image,(420,120))
+        glv_2_layer.blit(five_image,(530,120))
+        glv_2_layer.blit(six_image,(640,120))
+        glv_2_layer.blit(seven_image,(750,120))
+        glv_2_layer.blit(eight_image,(860,120))
 
-        glv_2_layer.blit(str_left,(550,100))
-        glv_2_layer.blit(str_right,(670,100))
+        glv_2_layer.blit(str_left,(1010,100))
+        glv_2_layer.blit(str_right,(1130,100))
         glv_2_layer.blit(plus_image,(10,30))
         glv_2_layer.blit(minus_image,(10,70))
         
@@ -419,10 +482,10 @@ def eraser():
             color_choice = 0
         elif color_choice < 0:
             color_choice = 4
-        if silver_pos>735:
-            silver_pos = 495
-        elif silver_pos < 495:
-            silver_pos = 735
+        if silver_pos>1195:
+            silver_pos = 955
+        elif silver_pos < 955:
+            silver_pos = 1195
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -433,6 +496,10 @@ def eraser():
                 if event.key == pygame.K_2: choice = 2; running = False
                 if event.key == pygame.K_3: choice = 3; running = False
                 if event.key == pygame.K_4: choice = 4; running = False
+                if event.key == pygame.K_5: choice = 5; running = False
+                if event.key == pygame.K_6: choice = 6; running = False
+                if event.key == pygame.K_7: choice = 7; running = False
+                if event.key == pygame.K_8: choice = 8; running = False
                 if event.key == pygame.K_EQUALS: ERASER_SIZE += 5
                 if event.key == pygame.K_MINUS: ERASER_SIZE = max(5, ERASER_SIZE - 5)
                 if event.key == pygame.K_RIGHT: color_choice+=1; silver_pos+=60; glv_2_layer.fill(color.colorBLACK)
@@ -448,11 +515,10 @@ def eraser():
             color_choice = 0
         elif color_choice < 0:
             color_choice = 4
-        if silver_pos>735:
-            silver_pos = 495
-        elif silver_pos < 495:
-            silver_pos = 735
-
+        if silver_pos>1195:
+            silver_pos = 955
+        elif silver_pos < 955:
+            silver_pos = 1195
         #Deleting 
         if LMBpressed:
             x, y = pygame.mouse.get_pos()
@@ -461,6 +527,468 @@ def eraser():
         screen.blit(glv_layer, (0, 0))
         pygame.display.flip()
         clock.tick(60)
+
+def square():
+    # variables
+    global choice, run, glv_layer, color_choice, colors, silver_pos, glv_2_layer
+    color_figure = colors[color_choice]
+    
+    # Info for square
+    clock = pygame.time.Clock()
+    LMBpressed = False
+    THICKNESS = 5
+    currX = currY = prevX = prevY = 0
+    running = True
+
+    # function for calculate square rect
+    def calculate_square(x1, y1, x2, y2):
+        size = max(abs(x2 - x1), abs(y2 - y1))  # шаршының қабырғасы
+        return pygame.Rect(x1, y1, size if x2 >= x1 else -size, size if y2 >= y1 else -size)
+
+    # Main square loop
+    while running:
+        # Blit menu
+        screen.blit(glv_2_layer, (0, 540))
+
+        pygame.draw.line(glv_2_layer, color.colorWHITE, (0, 0), (WIDTH, 0), 10)
+
+        glv_2_layer.blit(silver_image, (silver_pos, 30))
+        glv_2_layer.blit(blue_image, (960, 35))
+        glv_2_layer.blit(green_image, (1020, 35))
+        glv_2_layer.blit(red_image, (1080, 35))
+        glv_2_layer.blit(white_image, (1140, 35))
+        glv_2_layer.blit(yellow_image, (1200, 35))
+
+        glv_2_layer.blit(rect_image, (50, 10))
+        glv_2_layer.blit(circle_image, (160, 10))
+        glv_2_layer.blit(pen_image, (270, 10))
+        glv_2_layer.blit(eraser_image, (380, 10))
+        glv_2_layer.blit(sqr_image, (490, 10))
+        glv_2_layer.blit(right_tr_image, (600, 10))
+        glv_2_layer.blit(eq_tr_image, (710, 10))
+        glv_2_layer.blit(rhombus_image, (820, 10))
+
+        glv_2_layer.blit(one_image, (90, 120))
+        glv_2_layer.blit(two_image, (200, 120))
+        glv_2_layer.blit(three_image, (310, 120))
+        glv_2_layer.blit(four_image, (420, 120))
+        glv_2_layer.blit(five_image, (530, 120))
+        glv_2_layer.blit(six_image, (640, 120))
+        glv_2_layer.blit(seven_image, (750, 120))
+        glv_2_layer.blit(eight_image, (860, 120))
+
+        glv_2_layer.blit(str_left, (1010, 100))
+        glv_2_layer.blit(str_right, (1130, 100))
+        glv_2_layer.blit(plus_image, (10, 30))
+        glv_2_layer.blit(minus_image, (10, 70))
+
+        # Check values
+        if color_choice > 4:
+            color_choice = 0
+        elif color_choice < 0:
+            color_choice = 4
+        if silver_pos > 1195:
+            silver_pos = 955
+        elif silver_pos < 955:
+            silver_pos = 1195
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+                run = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_1: choice = 1; running = False
+                if event.key == pygame.K_2: choice = 2; running = False
+                if event.key == pygame.K_3: choice = 3; running = False
+                if event.key == pygame.K_4: choice = 4; running = False
+                if event.key == pygame.K_5: choice = 5; running = False
+                if event.key == pygame.K_6: choice = 6; running = False
+                if event.key == pygame.K_7: choice = 7; running = False
+                if event.key == pygame.K_8: choice = 8; running = False
+                if event.key == pygame.K_EQUALS: THICKNESS += 1
+                if event.key == pygame.K_MINUS: THICKNESS = max(1, THICKNESS - 1)
+                if event.key == pygame.K_RIGHT: color_choice += 1; silver_pos += 60; glv_2_layer.fill(color.colorBLACK)
+                if event.key == pygame.K_LEFT: color_choice -= 1; silver_pos -= 60; glv_2_layer.fill(color.colorBLACK)
+
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                LMBpressed = True
+                prevX, prevY = event.pos
+
+            if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+                LMBpressed = False
+                currX, currY = event.pos
+                pygame.draw.rect(glv_layer, color_figure, calculate_square(prevX, prevY, currX, currY), THICKNESS)
+        
+        if color_choice>4:
+            color_choice = 0
+        elif color_choice < 0:
+            color_choice = 4
+        if silver_pos>1195:
+            silver_pos = 955
+        elif silver_pos < 955:
+            silver_pos = 1195
+    
+        color_figure = colors[color_choice]
+
+        if LMBpressed:
+            currX, currY = pygame.mouse.get_pos()
+            screen.blit(glv_layer, (0, 0))
+            pygame.draw.rect(screen, color_figure, calculate_square(prevX, prevY, currX, currY), THICKNESS)
+        else:
+            screen.blit(glv_layer, (0, 0))
+
+        pygame.display.flip()
+        clock.tick(60)
+
+def eq_triangle():
+    global choice, run, glv_layer, color_choice, colors, silver_pos, glv_2_layer
+    color_figure = colors[color_choice]
+    
+    clock = pygame.time.Clock()
+    LMBpressed = False
+    THICKNESS = 5
+    currX = currY = prevX = prevY = 0
+    running = True
+
+    # Function to calculate points of an equilateral triangle
+    def calculate_triangle(x1, y1, x2, y2):
+        dx = x2 - x1
+        dy = y2 - y1
+        side = max(abs(dx), abs(dy))
+
+        # Base midpoint
+        mx = x1
+        my = y1
+
+        # Bottom two points
+        p1 = (mx - side // 2, my + side // 2)
+        p2 = (mx + side // 2, my + side // 2)
+
+        # Top point
+        p3 = (mx, my - int((3 ** 0.5 / 2) * side))  # биіктік формуласы
+
+        return [p1, p2, p3]
+
+    while running:
+        screen.blit(glv_2_layer, (0, 540))
+        pygame.draw.line(glv_2_layer, color.colorWHITE, (0, 0), (WIDTH, 0), 10)
+
+        glv_2_layer.blit(silver_image, (silver_pos, 30))
+        glv_2_layer.blit(blue_image, (960, 35))
+        glv_2_layer.blit(green_image, (1020, 35))
+        glv_2_layer.blit(red_image, (1080, 35))
+        glv_2_layer.blit(white_image, (1140, 35))
+        glv_2_layer.blit(yellow_image, (1200, 35))
+
+        glv_2_layer.blit(rect_image, (50, 10))
+        glv_2_layer.blit(circle_image, (160, 10))
+        glv_2_layer.blit(pen_image, (270, 10))
+        glv_2_layer.blit(eraser_image, (380, 10))
+        glv_2_layer.blit(sqr_image, (490, 10))
+        glv_2_layer.blit(right_tr_image, (600, 10))
+        glv_2_layer.blit(eq_tr_image, (710, 10))
+        glv_2_layer.blit(rhombus_image, (820, 10))
+
+        glv_2_layer.blit(one_image, (90, 120))
+        glv_2_layer.blit(two_image, (200, 120))
+        glv_2_layer.blit(three_image, (310, 120))
+        glv_2_layer.blit(four_image, (420, 120))
+        glv_2_layer.blit(five_image, (530, 120))
+        glv_2_layer.blit(six_image, (640, 120))
+        glv_2_layer.blit(seven_image, (750, 120))
+        glv_2_layer.blit(eight_image, (860, 120))
+
+        glv_2_layer.blit(str_left, (1010, 100))
+        glv_2_layer.blit(str_right, (1130, 100))
+        glv_2_layer.blit(plus_image, (10, 30))
+        glv_2_layer.blit(minus_image, (10, 70))
+
+        if color_choice > 4:
+            color_choice = 0
+        elif color_choice < 0:
+            color_choice = 4
+        if silver_pos > 1195:
+            silver_pos = 955
+        elif silver_pos < 955:
+            silver_pos = 1195
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+                run = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_1: choice = 1; running = False
+                if event.key == pygame.K_2: choice = 2; running = False
+                if event.key == pygame.K_3: choice = 3; running = False
+                if event.key == pygame.K_4: choice = 4; running = False
+                if event.key == pygame.K_5: choice = 5; running = False
+                if event.key == pygame.K_6: choice = 6; running = False
+                if event.key == pygame.K_7: choice = 7; running = False
+                if event.key == pygame.K_8: choice = 8; running = False
+                if event.key == pygame.K_EQUALS: THICKNESS += 1
+                if event.key == pygame.K_MINUS: THICKNESS = max(1, THICKNESS - 1)
+                if event.key == pygame.K_RIGHT: color_choice += 1; silver_pos += 60; glv_2_layer.fill(color.colorBLACK)
+                if event.key == pygame.K_LEFT: color_choice -= 1; silver_pos -= 60; glv_2_layer.fill(color.colorBLACK)
+
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                LMBpressed = True
+                prevX, prevY = event.pos
+
+            if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+                LMBpressed = False
+                currX, currY = event.pos
+                points = calculate_triangle(prevX, prevY, currX, currY)
+                pygame.draw.polygon(glv_layer, color_figure, points, THICKNESS)
+
+        if color_choice > 4:
+            color_choice = 0
+        elif color_choice < 0:
+            color_choice = 4
+        if silver_pos > 1195:
+            silver_pos = 955
+        elif silver_pos < 955:
+            silver_pos = 1195
+
+        color_figure = colors[color_choice]
+
+        if LMBpressed:
+            currX, currY = pygame.mouse.get_pos()
+            points = calculate_triangle(prevX, prevY, currX, currY)
+            screen.blit(glv_layer, (0, 0))
+            pygame.draw.polygon(screen, color_figure, points, THICKNESS)
+        else:
+            screen.blit(glv_layer, (0, 0))
+
+        pygame.display.flip()
+        clock.tick(60)
+
+def right_triangle():
+    global choice, run, glv_layer, color_choice, colors, silver_pos, glv_2_layer
+    color_figure = colors[color_choice]
+    
+    clock = pygame.time.Clock()
+    LMBpressed = False
+    THICKNESS = 5
+    currX = currY = prevX = prevY = 0
+    running = True
+
+    # Function to calculate points of right triangle
+    def calculate_right_triangle(x1, y1, x2, y2):
+        return [(x1, y1), (x2, y2), (x1, y2)]  # Тік бұрыш төменгі сол жақта
+
+    while running:
+        screen.blit(glv_2_layer, (0, 540))
+        pygame.draw.line(glv_2_layer, color.colorWHITE, (0, 0), (WIDTH, 0), 10)
+
+        glv_2_layer.blit(silver_image, (silver_pos, 30))
+        glv_2_layer.blit(blue_image, (960, 35))
+        glv_2_layer.blit(green_image, (1020, 35))
+        glv_2_layer.blit(red_image, (1080, 35))
+        glv_2_layer.blit(white_image, (1140, 35))
+        glv_2_layer.blit(yellow_image, (1200, 35))
+
+        glv_2_layer.blit(rect_image, (50, 10))
+        glv_2_layer.blit(circle_image, (160, 10))
+        glv_2_layer.blit(pen_image, (270, 10))
+        glv_2_layer.blit(eraser_image, (380, 10))
+        glv_2_layer.blit(sqr_image, (490, 10))
+        glv_2_layer.blit(right_tr_image, (600, 10))
+        glv_2_layer.blit(eq_tr_image, (710, 10))
+        glv_2_layer.blit(rhombus_image, (820, 10))
+
+        glv_2_layer.blit(one_image, (90, 120))
+        glv_2_layer.blit(two_image, (200, 120))
+        glv_2_layer.blit(three_image, (310, 120))
+        glv_2_layer.blit(four_image, (420, 120))
+        glv_2_layer.blit(five_image, (530, 120))
+        glv_2_layer.blit(six_image, (640, 120))
+        glv_2_layer.blit(seven_image, (750, 120))
+        glv_2_layer.blit(eight_image, (860, 120))
+
+        glv_2_layer.blit(str_left, (1010, 100))
+        glv_2_layer.blit(str_right, (1130, 100))
+        glv_2_layer.blit(plus_image, (10, 30))
+        glv_2_layer.blit(minus_image, (10, 70))
+
+        if color_choice > 4:
+            color_choice = 0
+        elif color_choice < 0:
+            color_choice = 4
+        if silver_pos > 1195:
+            silver_pos = 955
+        elif silver_pos < 955:
+            silver_pos = 1195
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+                run = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_1: choice = 1; running = False
+                if event.key == pygame.K_2: choice = 2; running = False
+                if event.key == pygame.K_3: choice = 3; running = False
+                if event.key == pygame.K_4: choice = 4; running = False
+                if event.key == pygame.K_5: choice = 5; running = False
+                if event.key == pygame.K_6: choice = 6; running = False
+                if event.key == pygame.K_7: choice = 7; running = False
+                if event.key == pygame.K_8: choice = 8; running = False
+                if event.key == pygame.K_EQUALS: THICKNESS += 1
+                if event.key == pygame.K_MINUS: THICKNESS = max(1, THICKNESS - 1)
+                if event.key == pygame.K_RIGHT: color_choice += 1; silver_pos += 60; glv_2_layer.fill(color.colorBLACK)
+                if event.key == pygame.K_LEFT: color_choice -= 1; silver_pos -= 60; glv_2_layer.fill(color.colorBLACK)
+
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                LMBpressed = True
+                prevX, prevY = event.pos
+
+            if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+                LMBpressed = False
+                currX, currY = event.pos
+                points = calculate_right_triangle(prevX, prevY, currX, currY)
+                pygame.draw.polygon(glv_layer, color_figure, points, THICKNESS)
+
+        if color_choice > 4:
+            color_choice = 0
+        elif color_choice < 0:
+            color_choice = 4
+        if silver_pos > 1195:
+            silver_pos = 955
+        elif silver_pos < 955:
+            silver_pos = 1195
+
+        color_figure = colors[color_choice]
+
+        if LMBpressed:
+            currX, currY = pygame.mouse.get_pos()
+            points = calculate_right_triangle(prevX, prevY, currX, currY)
+            screen.blit(glv_layer, (0, 0))
+            pygame.draw.polygon(screen, color_figure, points, THICKNESS)
+        else:
+            screen.blit(glv_layer, (0, 0))
+
+        pygame.display.flip()
+        clock.tick(60)
+
+def rhombus():
+    global choice, run, glv_layer, color_choice, colors, silver_pos, glv_2_layer
+    color_figure = colors[color_choice]
+
+    clock = pygame.time.Clock()
+    LMBpressed = False
+    THICKNESS = 5
+    currX = currY = prevX = prevY = 0
+    running = True
+
+    # Function to calculate rhombus points
+    def calculate_rhombus(x1, y1, x2, y2):
+        cx = (x1 + x2) // 2
+        cy = (y1 + y2) // 2
+
+        dx = abs(x2 - x1) // 2
+        dy = abs(y2 - y1) // 2
+
+        # Diagonals: horizontal and vertical
+        p1 = (cx, cy - dy)  # top
+        p2 = (cx + dx, cy)  # right
+        p3 = (cx, cy + dy)  # bottom
+        p4 = (cx - dx, cy)  # left
+
+        return [p1, p2, p3, p4]
+
+    while running:
+        screen.blit(glv_2_layer, (0, 540))
+        pygame.draw.line(glv_2_layer, color.colorWHITE, (0, 0), (WIDTH, 0), 10)
+
+        glv_2_layer.blit(silver_image, (silver_pos, 30))
+        glv_2_layer.blit(blue_image, (960, 35))
+        glv_2_layer.blit(green_image, (1020, 35))
+        glv_2_layer.blit(red_image, (1080, 35))
+        glv_2_layer.blit(white_image, (1140, 35))
+        glv_2_layer.blit(yellow_image, (1200, 35))
+
+        glv_2_layer.blit(rect_image, (50, 10))
+        glv_2_layer.blit(circle_image, (160, 10))
+        glv_2_layer.blit(pen_image, (270, 10))
+        glv_2_layer.blit(eraser_image, (380, 10))
+        glv_2_layer.blit(sqr_image, (490, 10))
+        glv_2_layer.blit(right_tr_image, (600, 10))
+        glv_2_layer.blit(eq_tr_image, (710, 10))
+        glv_2_layer.blit(rhombus_image, (820, 10))
+
+        glv_2_layer.blit(one_image, (90, 120))
+        glv_2_layer.blit(two_image, (200, 120))
+        glv_2_layer.blit(three_image, (310, 120))
+        glv_2_layer.blit(four_image, (420, 120))
+        glv_2_layer.blit(five_image, (530, 120))
+        glv_2_layer.blit(six_image, (640, 120))
+        glv_2_layer.blit(seven_image, (750, 120))
+        glv_2_layer.blit(eight_image, (860, 120))
+
+        glv_2_layer.blit(str_left, (1010, 100))
+        glv_2_layer.blit(str_right, (1130, 100))
+        glv_2_layer.blit(plus_image, (10, 30))
+        glv_2_layer.blit(minus_image, (10, 70))
+
+        if color_choice > 4:
+            color_choice = 0
+        elif color_choice < 0:
+            color_choice = 4
+        if silver_pos > 1195:
+            silver_pos = 955
+        elif silver_pos < 955:
+            silver_pos = 1195
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+                run = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_1: choice = 1; running = False
+                if event.key == pygame.K_2: choice = 2; running = False
+                if event.key == pygame.K_3: choice = 3; running = False
+                if event.key == pygame.K_4: choice = 4; running = False
+                if event.key == pygame.K_5: choice = 5; running = False
+                if event.key == pygame.K_6: choice = 6; running = False
+                if event.key == pygame.K_7: choice = 7; running = False
+                if event.key == pygame.K_8: choice = 8; running = False
+                if event.key == pygame.K_EQUALS: THICKNESS += 1
+                if event.key == pygame.K_MINUS: THICKNESS = max(1, THICKNESS - 1)
+                if event.key == pygame.K_RIGHT: color_choice += 1; silver_pos += 60; glv_2_layer.fill(color.colorBLACK)
+                if event.key == pygame.K_LEFT: color_choice -= 1; silver_pos -= 60; glv_2_layer.fill(color.colorBLACK)
+
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                LMBpressed = True
+                prevX, prevY = event.pos
+
+            if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+                LMBpressed = False
+                currX, currY = event.pos
+                points = calculate_rhombus(prevX, prevY, currX, currY)
+                pygame.draw.polygon(glv_layer, color_figure, points, THICKNESS)
+
+        if color_choice > 4:
+            color_choice = 0
+        elif color_choice < 0:
+            color_choice = 4
+        if silver_pos > 1195:
+            silver_pos = 955
+        elif silver_pos < 955:
+            silver_pos = 1195
+
+        color_figure = colors[color_choice]
+
+        if LMBpressed:
+            currX, currY = pygame.mouse.get_pos()
+            points = calculate_rhombus(prevX, prevY, currX, currY)
+            screen.blit(glv_layer, (0, 0))
+            pygame.draw.polygon(screen, color_figure, points, THICKNESS)
+        else:
+            screen.blit(glv_layer, (0, 0))
+
+        pygame.display.flip()
+        clock.tick(60)
+
+
 
 
 # Main loop:
@@ -474,6 +1002,10 @@ while run:
             if event.key == pygame.K_2: choice = 2
             if event.key == pygame.K_3: choice = 3
             if event.key == pygame.K_4: choice = 4
+            if event.key == pygame.K_5: choice = 5; 
+            if event.key == pygame.K_6: choice = 6; 
+            if event.key == pygame.K_7: choice = 7; 
+            if event.key == pygame.K_8: choice = 8; 
      
     #choose one Function
     if choice == 1:
@@ -484,6 +1016,14 @@ while run:
         pen()
     elif choice == 4:
         eraser()
+    elif choice == 5:
+        square()
+    elif choice == 6:
+        right_triangle()
+    elif choice == 7:
+        eq_triangle()
+    elif choice == 8:
+        rhombus()
 
     #Also Test cycles
     if color_choice>4:
@@ -496,7 +1036,5 @@ while run:
 
 
     pygame.display.flip()
-
-
 
 pygame.quit()

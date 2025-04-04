@@ -21,11 +21,20 @@ font = pygame.font.SysFont("Verdana",60)
 font_small = pygame.font.SysFont("Verdana",20)
 game_over = font.render("Game Over", True,color.colorGREEN)
 
-apple_image = pygame.image.load("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\images/apple.png").convert_alpha()
-apple_image = pygame.transform.scale(apple_image,(30,30))
+
 
 game_over_sound = pygame.mixer.Sound("C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_08\sounds\sound2.mp3")
 
+apple_images = [
+    "C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/apple.png",
+    "C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/apple.png",
+    "C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/apple.png",
+    "C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/apple.png",
+    "C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/apple_2.png",
+    "C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/apple_3.png",
+    "C:\Apps_and_more\KBTU_1курс_2семестр\Programming\Lab_09\images/apple_4.png"
+]
+current_index = 0
 
 
 #Draw rects
@@ -62,12 +71,19 @@ class Point:
 #Class Food
 class Food:
     def __init__(self):
+        self.update_image()
         self.pos = Point(9, 9)# Default food position
 
+    def update_image(self):
+        global current_index
+        current_index = random.randint(0, len(apple_images) - 1) #choose index apple's image
+        random_path = apple_images[current_index]
+        apple_image = pygame.image.load(random_path).convert_alpha()#Apple's image
+        self.apple_image = pygame.transform.scale(apple_image , (30, 30))#Transform apple's image
     #Draw food
     def draw(self):
-        global apple_image
-        screen.blit(apple_image, (self.pos.x * CELL, self.pos.y * CELL))
+        
+        screen.blit(self.apple_image, (self.pos.x * CELL, self.pos.y * CELL))
 
     # Generate next food
     def generate_random_pos(self,snake_body):
@@ -83,6 +99,7 @@ class Food:
 
             if true_1 :
                 self.pos = new_Pos
+                
                 break
 
 
@@ -125,15 +142,23 @@ class Snake:
 
 #Checking
     def check_collision(self, food, snake_body):
-        global SCORE
-        global Next_level
+        global SCORE,Next_level,current_index
         head = self.body[0]
         if head.x == food.pos.x and head.y == food.pos.y:
             print("Got food!")
-            SCORE += 1
+            if current_index>=0 and current_index<=3:
+                SCORE+=1
+            elif current_index == 4:
+                SCORE+=2
+            elif current_index == 5:
+                SCORE+=3
+            elif current_index == 6:
+                SCORE+=4
             Next_level -= 1
             self.body.append(Point(head.x, head.y))
+            food.update_image()
             food.generate_random_pos(snake_body)
+            
 
 
 
@@ -188,7 +213,7 @@ while running:
 
     snake.draw()
     food.draw()
-
+    
     #for next level
     if Next_level==0:
         LEVEL+=1
